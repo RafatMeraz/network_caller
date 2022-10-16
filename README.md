@@ -21,6 +21,7 @@ Network caller for the api based application with the help of http package
 - logger
 
 ## Getting started
+Add these line into ```pubspec.yaml``` file as dependency and run ```flutter pub get```
 
 ```puml
  network_caller:
