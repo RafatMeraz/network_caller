@@ -22,13 +22,14 @@ Network caller for the api based application with the help of http package
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```puml
+ network_caller:
+    git:
+      url: git://github.com/RafatMeraz/network_caller.git
+      ref: version
+```
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
 
 ```dart
 
