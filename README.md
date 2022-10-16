@@ -11,12 +11,14 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Network caller for the api based application with the help of http package
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- get request
+- post request
+- multipart file support & conversion
+- logger
 
 ## Getting started
 
@@ -29,7 +31,14 @@ TODO: Include short and useful examples for package users. Add longer examples
 to `/example` folder.
 
 ```dart
-const like = 'sample';
+
+final response = BaseNetworkCaller.getRequest(
+    'url', 
+    token: 'your_token_here_if_necessary', 
+    onUnAuthorized: () {
+      // your desired action you want to do
+    }
+);
 ```
 
 ## Additional information
