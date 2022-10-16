@@ -32,7 +32,7 @@ to `/example` folder.
 
 ```dart
 
-final response = BaseNetworkCaller.getRequest(
+final response = await BaseNetworkCaller.getRequest(
     'url', 
     token: 'your_token_here_if_necessary', 
     onUnAuthorized: () {
