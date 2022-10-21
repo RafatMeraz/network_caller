@@ -12,7 +12,7 @@ class BaseNetworkCaller {
 
   /// get api caller
   static Future<NetworkCallerReturnObject> getRequest(String url,
-      {String? token, required VoidCallback onUnAuthorized}) async {
+      {String? token, VoidCallback? onUnAuthorized}) async {
     try {
       Uri uri = Uri.parse(url);
       final request = http.MultipartRequest('GET', uri);
@@ -30,7 +30,7 @@ class BaseNetworkCaller {
             success: true,
             responseCode: response.statusCode);
       } else if (response.statusCode == 401) {
-        onUnAuthorized();
+        if (onUnAuthorized != null) onUnAuthorized();
         return NetworkCallerReturnObject(
             errorMessage: 'Response code ${response.statusCode}',
             returnValue: '',
@@ -62,7 +62,7 @@ class BaseNetworkCaller {
       String url, Map<String, dynamic> data,
       {String? token,
       Iterable<http.MultipartFile>? images,
-      required VoidCallback onUnAuthorized,
+        VoidCallback? onUnAuthorized,
       bool? isLogin}) async {
     try {
       logger.wtf(data);
@@ -87,7 +87,7 @@ class BaseNetworkCaller {
             responseCode: response.statusCode);
       } else if (response.statusCode == 401) {
         if (isLogin != true) {
-          onUnAuthorized();
+          if (onUnAuthorized != null) onUnAuthorized();
         }
         return NetworkCallerReturnObject(
             errorMessage: 'Unauthorized',
@@ -119,7 +119,7 @@ class BaseNetworkCaller {
       String url, Map<String, String> data,
       {String? token,
       Iterable<http.MultipartFile>? images,
-      required VoidCallback onUnAuthorized}) async {
+      VoidCallback? onUnAuthorized}) async {
     try {
       logger.wtf(data);
       Uri uri = Uri.parse(url);
@@ -145,7 +145,7 @@ class BaseNetworkCaller {
             success: true,
             responseCode: response.statusCode);
       } else if (response.statusCode == 401) {
-        onUnAuthorized();
+        if (onUnAuthorized != null) onUnAuthorized();
         return NetworkCallerReturnObject(
             errorMessage: 'Response code ${response.statusCode}',
             returnValue: '',
