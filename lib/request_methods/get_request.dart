@@ -8,7 +8,7 @@ import '../request_return_object.dart';
 
 abstract class GetRequest {
   /// get api caller
-  static Future<NetworkCallerReturnObject> getRequest(String url,
+  static Future<NetworkCallerReturnObject> execute(String url,
       {String? token, VoidCallback? onUnAuthorized}) async {
     try {
       Uri uri = Uri.parse(url);

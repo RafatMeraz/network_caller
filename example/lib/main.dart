@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:network_caller/base_network_caller.dart';
+import 'package:network_caller/network_caller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
   String text = 'Loading';
 
   Future<void> getPosts() async {
-    final response = await BaseNetworkCaller.getRequest(
+    final response = await GetRequest.getRequest(
         'https://jsonplaceholder.typicode.com/posts',
         onUnAuthorized: () {});
     text = response.returnValue.toString();

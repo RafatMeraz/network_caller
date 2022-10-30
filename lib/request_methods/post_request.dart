@@ -10,7 +10,7 @@ abstract class PostRequest {
   /// post api caller with or without image
   /// For image upload, you have pass a list of multipart image file
   /// For convert a file to multipart, use MultipartCoverter class's method imageToMultipartConverter
-  static Future<NetworkCallerReturnObject> postRequest(
+  static Future<NetworkCallerReturnObject> execute(
       String url, Map<String, String> data,
       {String? token,
       Iterable<http.MultipartFile>? images,
