@@ -60,10 +60,7 @@ class BaseNetworkCaller {
   /// post api caller
   static Future<NetworkCallerReturnObject> postRequest(
       String url, Map<String, dynamic> data,
-      {String? token,
-      Iterable<http.MultipartFile>? images,
-        VoidCallback? onUnAuthorized,
-      bool? isLogin}) async {
+      {String? token, VoidCallback? onUnAuthorized, bool? isLogin}) async {
     try {
       logger.wtf(data);
       logger.wtf(url);
@@ -114,7 +111,7 @@ class BaseNetworkCaller {
     }
   }
 
-  /// post api caller
+  /// post api caller with image
   static Future<NetworkCallerReturnObject> postMultiPartRequest(
       String url, Map<String, String> data,
       {String? token,
@@ -128,9 +125,11 @@ class BaseNetworkCaller {
       request.headers['Content-Type'] = 'application/json';
       if (token != null) request.headers['Authorization'] = 'Bearer $token';
       request.fields.addAll(data);
-      logger.w('---${images!.length}');
-      request.files.addAll(images);
-      logger.i(request.files);
+      logger.w('---${images?.length ?? 0}');
+      if (images != null) {
+        request.files.addAll(images);
+        logger.i(request.files);
+      }
       final response = await request.send();
       logger.w(response.statusCode);
       logger.w(token);
