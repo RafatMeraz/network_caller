@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
   String text = 'Loading';
 
   Future<void> getPosts() async {
-    final response = await GetRequest.getRequest(
+    final response = await GetRequest.execute(
         'https://jsonplaceholder.typicode.com/posts',
         onUnAuthorized: () {});
     text = response.returnValue.toString();
@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> getUsers() async {
-    final response = await BaseNetworkCaller.getRequest(
+    final response = await GetRequest.execute(
         'http://restapi.adequateshop.com/api/users',
         token: '4f7d7422-b435-48ad-b9ba-bb0ccc724613',
         onUnAuthorized: () {});
@@ -46,13 +46,9 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> registration() async {
-    final response = await BaseNetworkCaller.postRequest(
+    final response = await PostRequest.execute(
         'http://restapi.adequateshop.com/api/authaccount/registration',
-        {
-          "name":"example",
-          "email":"example@gmail.com",
-          "password":123456
-        },
+        {"name": "example", "email": "example@gmail.com", "password": '123456'},
         isLogin: true,
         onUnAuthorized: () {});
     print(response.responseCode);
@@ -61,14 +57,13 @@ class _HomeState extends State<Home> {
     // setState(() {});
   }
 
-
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // getPosts();
       // registration();
-      getUsers();
+      getPosts();
     });
   }
 
