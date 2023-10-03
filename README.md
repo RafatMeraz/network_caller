@@ -26,7 +26,7 @@ Add these line into ```pubspec.yaml``` file as dependency and run ```flutter pub
 ```puml
  network_caller:
     git:
-      url: git://github.com/RafatMeraz/network_caller.git
+      url: https://github.com/RafatMeraz/network_caller
       ref: version
 ```
 
